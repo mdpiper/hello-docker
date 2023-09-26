@@ -1,4 +1,4 @@
-FROM conda/miniconda3-centos7
+FROM condaforge/miniforge3
 
 WORKDIR /opt
 
