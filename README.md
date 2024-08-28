@@ -1,4 +1,4 @@
-# docker-example
+# hello-docker
 
 A simple example of setting up, building, and running a Docker image.
 
@@ -25,6 +25,6 @@ in a web browser on your local machine.
 
 Stop the container and remove it with:
 ```
-docker stop hiya
-docker rm hiya
+docker container stop hiya
+docker container rm hiya
 ```
