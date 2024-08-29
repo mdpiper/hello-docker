@@ -9,7 +9,6 @@ on:
 env:
     USER: mpiper
     REPO: hello-docker
-    VERSION: ${GITHUB_REF:11}
 
 jobs:
 
@@ -54,9 +53,23 @@ jobs:
   tag-from-env:
     runs-on: ubuntu-latest
 
+    env:
+      VERSION: ${GITHUB_REF:11}
+
     steps:
       - name: Check tag
         run: |
           echo $USER
           echo $REPO
           echo $VERSION
+          echo ${GITHUB_REF:11}
+
+  tag-from-github-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check tag
+        if: ${{ github.ref_type }} == 'tag'
+        run: |
+          echo ${{ github.repository }}
+          echo ${{ github.ref_name }}
