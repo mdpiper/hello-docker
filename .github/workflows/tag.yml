@@ -6,6 +6,11 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
       - '!v[0-9]+.[0-9]+.[0-9]+[ab][0-9]+'
 
+env:
+    USER: mpiper
+    REPO: hello-docker
+    VERSION: ${GITHUB_REF:11}
+
 jobs:
 
   tag-from-action:
@@ -26,9 +31,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - uses: actions/checkout@v4
-      # ${GITHUB_REF:10}
-
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
@@ -48,3 +50,13 @@ jobs:
       - name: Check tag
         run: |
           echo ${{ steps.vars.outputs.tag }}
+
+  tag-from-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check tag
+        run: |
+          echo $USER
+          echo $REPO
+          echo $VERSION
