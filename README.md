@@ -28,3 +28,10 @@ Stop the container and remove it with:
 docker container stop hiya
 docker container rm hiya
 ```
+
+## Automatically build and push image
+
+I set up a CI workflow in [release.yml](./.github/workflows/release.yml)
+to build the *hellow-docker* image and push it to Docker Hub.
+The workflow only runs when the repo is tagged.
+Just push the tag to GitHub and the workflow handles the rest.
